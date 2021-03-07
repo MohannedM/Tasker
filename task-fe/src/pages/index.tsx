@@ -4,15 +4,13 @@ import { Switch, Route } from 'react-router-dom'
 import { Dispatch } from 'redux';
 import MainLayout from '../modules/View/Layout/MainLayout'
 import { authInit, authInitType, authState } from '../store/auth';
-// import NotFound from './NotFound'
-// import AddRecipe from './AddRecipe'
-// import EditRecipe from './EditRecipe'
-// import ViewRecipes from './ViewRecipes'
+import AddTaskPage from './AddTaskPage';
+import DashboardPage from './DashboardPage';
 import LandingPage from './LandingPage'
 import Login from './Login';
 import LogoutPage from './Logout';
+import NotFoundPage from './NotFoundPage';
 import Register from './Register';
-// import ViewRecipe from './ViewRecipe'
 
 interface PageProps {
   isLoggedIn: boolean
@@ -28,16 +26,16 @@ const Pages: React.FC<PageProps> = ({ isLoggedIn, onAuthInit }) =>  {
   <MainLayout isLoggedIn={isLoggedIn}>
     <Switch>
 
-      {/* <Route path="/Recipes/edit/:id" component={EditRecipe} />
-      <Route path="/Recipes/new" component={AddRecipe} /> */ }
-
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/" exact component={LandingPage} />
           <Route path="/logout" component={LogoutPage} />
-      {/* <Route path="/" exact component={ViewRecipes} /> */}
 
-      {/* <Route path="/" component={NotFound} /> */}
+          <Route path="/add-task" component={AddTaskPage} />
+
+          {!isLoggedIn && <Route path="/" exact component={LandingPage} />}
+          {isLoggedIn && <Route path="/" exact component={DashboardPage} />}
+
+          <Route path="/" component={NotFoundPage} />
 
     </Switch>
   </MainLayout>

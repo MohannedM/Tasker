@@ -14,6 +14,9 @@ const createTaskValidations = ({ taskInput }) => {
     if (!validator_1.default.isLength(taskInput.body, { min: 5, max: 200 }) || validator_1.default.isEmpty(taskInput.body)) {
         errors.push({ message: 'Body should be between 5 and 200 characters' });
     }
+    if (validator_1.default.isEmpty(taskInput.assignedTo)) {
+        errors.push({ message: 'Assignee should be specified' });
+    }
     if (errors.length > 0) {
         throw new custom_errors_1.CustomError('Invalid input', 400, errors);
     }

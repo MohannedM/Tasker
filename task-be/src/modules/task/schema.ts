@@ -13,7 +13,7 @@ export const taskSchema = `
     }
 
     type Task{
-        id: ID!
+        _id: ID!
         title: String!
         body: String!
         createdBy: User!
@@ -25,12 +25,12 @@ export const taskSchema = `
     extend type Mutation{
         createTask(taskInput: CreateTaskInput): Task!
         updateTask(taskInput: UpdateTaskInput): Task!
-        deleteTask(userData: LoginInput): AuthData!
+        deleteTask(taskId: ID!): Task!
     }
 
     extend type Query{
-        getUserCreatedTasks(token: String!): [Task]
-        getUserWork(token: String!): [Task]
+        getUserCreatedTasks: [Task]!
+        getUserAssignedTasks: [Task]!
         getTask(taskId: String!): Task!
     }
 `

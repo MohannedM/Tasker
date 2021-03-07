@@ -1,0 +1,9 @@
+label{
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+}
+
+textarea{
+    resize: none;
+}

@@ -11,7 +11,7 @@ export const userSchema = `
     }
 
     type User{
-        id: ID!
+        _id: ID!
         username: String!
         email: String!
     }
@@ -28,5 +28,6 @@ export const userSchema = `
 
     extend type Query{
         getUserData(token: String!): User!
+        getUsers: [User]!
     }
 `

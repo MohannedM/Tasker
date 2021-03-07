@@ -2,7 +2,7 @@ import { UserModel } from './model'
 import { AddArgs } from './types' // eslint-disable-line
 
 export class User {
-  static async findByCondition (userCondition: {[key: string]: string}) {
+  static async findOneByCondition (userCondition: {[key: string]: string}) {
     const user = await UserModel.findOne(userCondition)
     return user
   }
@@ -17,5 +17,15 @@ export class User {
 
     await user.save()
     return user
+  }
+
+  static async all () {
+    const query = UserModel.find()
+
+    query.select('-password')
+
+    const users = await query.exec()
+
+    return users
   }
 }

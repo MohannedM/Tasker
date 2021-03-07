@@ -13,10 +13,10 @@ exports.userResolvers = {
     register: async ({ userData }) => {
         validation_1.registerValidations({ userData });
         const { username, email, password } = userData;
-        const usernameExists = await User_1.User.findByCondition({ username });
+        const usernameExists = await User_1.User.findOneByCondition({ username });
         if (usernameExists)
             throw new custom_errors_1.CustomError('Username already exists', 400);
-        const emailExists = await User_1.User.findByCondition({ email });
+        const emailExists = await User_1.User.findOneByCondition({ email });
         if (emailExists)
             throw new custom_errors_1.CustomError('Email already exists', 400);
         const hashedPassword = await bcryptjs_1.default.hash(password, 12);
@@ -33,7 +33,7 @@ exports.userResolvers = {
         return {
             token,
             user: {
-                id: user._id,
+                _id: user._id,
                 email: user.email,
                 username: user.username,
             },
@@ -42,7 +42,7 @@ exports.userResolvers = {
     login: async ({ userData }) => {
         validation_1.loginValidations({ userData });
         const { email, password } = userData;
-        const returnedUser = await User_1.User.findByCondition({ email });
+        const returnedUser = await User_1.User.findOneByCondition({ email });
         if (!returnedUser)
             throw new custom_errors_1.CustomError('Email or password is incorrect', 401);
         const isPasswordVerified = await bcryptjs_1.default.compare(password, returnedUser.password);
@@ -56,7 +56,7 @@ exports.userResolvers = {
         return {
             token,
             user: {
-                id: returnedUser._id,
+                _id: returnedUser._id,
                 email: returnedUser.email,
                 username: returnedUser.username,
             },
@@ -70,10 +70,16 @@ exports.userResolvers = {
         return {
             token,
             user: {
-                id: decodedToken._id,
+                _id: decodedToken._id,
                 email: decodedToken.email,
                 username: decodedToken.username,
             },
         };
+    },
+    getUsers: async (_, req) => {
+        if (!req.isAuth || !req.userId)
+            throw new custom_errors_1.CustomError('Unauthorized', 401);
+        const users = await User_1.User.all();
+        return users;
     },
 };

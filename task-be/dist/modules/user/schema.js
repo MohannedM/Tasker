@@ -14,7 +14,7 @@ exports.userSchema = `
     }
 
     type User{
-        id: ID!
+        _id: ID!
         username: String!
         email: String!
     }
@@ -31,5 +31,6 @@ exports.userSchema = `
 
     extend type Query{
         getUserData(token: String!): User!
+        getUsers: [User]!
     }
 `;

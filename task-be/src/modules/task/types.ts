@@ -6,7 +6,7 @@ export interface ITask extends Document {
     title: string
     body: string
     createdBy: IUser | Types.ObjectId | string
-    assignedTo?: IUser | Types.ObjectId | string
+    assignedTo: IUser | Types.ObjectId | string
     createdAt: string
     updatedAt: string
 }
@@ -19,7 +19,11 @@ export interface CreateTaskInput {
  }
 }
 
-export interface ShowTaskArgs {
+export interface ShowTaskInput {
+    taskId: string
+}
+
+export interface DeleteTaskInput {
     taskId: string
 }
 
@@ -32,18 +36,22 @@ export interface UpdateTaskInput {
  }
 }
 
-export interface DeleteTaskArgs {
-    taskId: string
+export interface UpdateTaskArgs {
+    body?: string
+    title?: string
+    createdBy: string
+    assignedTo?: string
 }
 
 export interface AddArgs {
     title: string
     body: string
     createdBy: string
-    assignedTo?: string
+    assignedTo: string
 }
 
 export interface UpdateArgs {
+    taskId: string
     title?: string
     body?: string
     assignedTo?: string
