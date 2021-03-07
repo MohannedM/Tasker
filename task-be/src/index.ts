@@ -3,6 +3,7 @@ import { json } from 'body-parser'
 import mongoose from 'mongoose'
 import { graphqlHTTP } from 'express-graphql'
 import { schema, resolvers } from './modules'
+import { authMiddleware } from './middlewares/auth'
 
 const app = express()
 
@@ -17,6 +18,8 @@ app.use((req, res, next) => { //eslint-disable-line
   }
   next()
 })
+
+app.use(authMiddleware)
 
 app.use('/graphql', graphqlHTTP({
   schema,

@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.getUserDataValidations = exports.loginValidations = exports.registerValidations = void 0;
 const validator_1 = __importDefault(require("validator"));
-const custom_errors_1 = require("../errors/custom-errors");
+const custom_errors_1 = require("../../errors/custom-errors");
 const registerValidations = ({ userData }) => {
     const errors = [];
     if (!validator_1.default.isEmail(userData.email)) {

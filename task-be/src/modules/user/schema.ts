@@ -21,12 +21,12 @@ export const userSchema = `
         user: User!
     }
 
-    type Mutation{
+    extend type Mutation{
         register(userData: RegisterInput): AuthData!
         login(userData: LoginInput): AuthData!
     }
 
-    type Query{
+    extend type Query{
         getUserData(token: String!): User!
     }
 `

@@ -1,4 +1,7 @@
-export const taskSchema = `
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.taskSchema = void 0;
+exports.taskSchema = `
     input CreateTaskInput{
         title: String!
         body: String!
@@ -33,4 +36,4 @@ export const taskSchema = `
         getUserWork(token: String!): [Task]
         getTask(taskId: String!): Task!
     }
-`
+`;

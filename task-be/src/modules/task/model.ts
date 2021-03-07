@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { TaskDoc } from './types' //eslint-disable-line
+import { ITask } from './types' //eslint-disable-line
 
 const taskSchema = new mongoose.Schema({
   title: {
@@ -21,6 +21,6 @@ const taskSchema = new mongoose.Schema({
   },
 }, { timestamps: true })
 
-const TaskModel = mongoose.model<TaskDoc>('Task', taskSchema)
+const TaskModel = mongoose.model<ITask>('Task', taskSchema)
 
 export { TaskModel }

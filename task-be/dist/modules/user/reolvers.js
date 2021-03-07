@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.userResolvers = void 0;
 const bcryptjs_1 = __importDefault(require("bcryptjs"));
 const jsonwebtoken_1 = __importDefault(require("jsonwebtoken"));
-const custom_errors_1 = require("../errors/custom-errors");
+const custom_errors_1 = require("../../errors/custom-errors");
 const User_1 = require("./User");
 const validation_1 = require("./validation");
 exports.userResolvers = {

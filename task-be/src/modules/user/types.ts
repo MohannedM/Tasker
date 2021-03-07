@@ -1,6 +1,6 @@
 import { Document } from 'mongoose' //eslint-disable-line
 
-export interface UserDoc extends Document {
+export interface IUser extends Document {
     _id: string
     username: string
     email: string

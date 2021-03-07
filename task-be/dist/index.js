@@ -8,6 +8,7 @@ const body_parser_1 = require("body-parser");
 const mongoose_1 = __importDefault(require("mongoose"));
 const express_graphql_1 = require("express-graphql");
 const modules_1 = require("./modules");
+const auth_1 = require("./middlewares/auth");
 const app = express_1.default();
 app.use(body_parser_1.json());
 app.use((req, res, next) => {
@@ -19,6 +20,7 @@ app.use((req, res, next) => {
     }
     next();
 });
+app.use(auth_1.authMiddleware);
 app.use('/graphql', express_graphql_1.graphqlHTTP({
     schema: modules_1.schema,
     rootValue: modules_1.resolvers,

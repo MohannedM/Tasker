@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import { UserDoc } from './types' //eslint-disable-line
+import { IUser } from './types' //eslint-disable-line
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -16,6 +16,6 @@ const userSchema = new mongoose.Schema({
   },
 })
 
-const UserModel = mongoose.model<UserDoc>('User', userSchema)
+const UserModel = mongoose.model<IUser>('User', userSchema)
 
 export { UserModel }

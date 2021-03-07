@@ -1,12 +1,12 @@
 import { Document, Types } from 'mongoose' //eslint-disable-line
-import { UserDoc } from '../user/types' //eslint-disable-line
+import { IUser } from '../user/types' //eslint-disable-line
 
-export interface TaskDoc extends Document {
+export interface ITask extends Document {
     _id: string
     title: string
     body: string
-    createdBy: UserDoc | Types.ObjectId | string
-    assignedTo?: UserDoc | Types.ObjectId | string
+    createdBy: IUser | Types.ObjectId | string
+    assignedTo?: IUser | Types.ObjectId | string
     createdAt: string
     updatedAt: string
 }
@@ -15,7 +15,7 @@ export interface CreateTaskInput {
     taskInput: {
     title: string
     body: string
-    assignedTo?: string
+    assignedTo: string
  }
 }
 
