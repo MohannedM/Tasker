@@ -1,0 +1,10 @@
+.footer {
+    position: absolute;
+    bottom: 0 !important;
+    height: 10vh;
+    width: 100%;
+}
+
+.footer p {
+    font-size: 18px;
+}

@@ -1,0 +1,54 @@
+{
+    "extends": "airbnb-base",
+    "parser": "@typescript-eslint/parser",
+    // add your environment below the extends key, like this:
+    "env": {
+        "node": true,
+        "browser": true
+    },
+    "plugins": ["import"],
+    "parserOptions": {
+        "ecmaVersion": 9
+    },
+    "rules": {
+        "semi": ["error", "never"],
+        "arrow-parens": ["error", "always"],
+        "object-curly-newline": ["error", { "consistent": true }],
+        "space-before-function-paren": ["error", "always"],
+        "import/no-extraneous-dependencies": [2, { "devDependencies": true }],
+        "newline-per-chained-call": ["error", { "ignoreChainWithDepth": 10 }],
+        "no-underscore-dangle": [2, { "allow": ["_id", "_version", "_ids"] }],
+        "import/prefer-default-export": "off",
+        "linebreak-style": 0,
+        "max-len": "off",
+        "import/extensions": [
+          "error",
+          "always",
+          {
+            "ts": "never",
+            "tsx": "never",
+            "js": "never",
+            "jsx": "never"
+          }
+        ]
+    },
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx"]
+        }
+      }
+    },
+    "globals": {
+      "describe": "readonly",
+      "it": "readonly",
+      "xit": "readonly",
+      "fit": "readonly",
+      "expect": "readonly",
+      "beforeAll": "readonly",
+      "afterAll": "readonly",
+      "jest": "readonly",
+      "beforeEach": "readonly",
+      "afterEach": "readonly"
+    }
+}
