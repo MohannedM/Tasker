@@ -21,6 +21,9 @@ const MainNavbar: React.FC<MainNavbarProps> = ({isLoggedIn}) => (
        <Link to="/add-task" className="text-secondary nav-link">
         Add Task
         </Link>
+        <Link to="/add-task" className="text-secondary nav-link">
+        Your Work
+        </Link>
         <Link to="/logout" className="text-secondary nav-link">
         Logout
         </Link>

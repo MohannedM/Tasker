@@ -20,6 +20,7 @@ export type {
     authInitType,
     logoutType,
     authDismissErrorType,
+    authDataType,
 } from './types'
 
 export { authReducer } from './reducers'

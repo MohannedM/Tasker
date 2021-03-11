@@ -31,6 +31,6 @@ export const taskSchema = `
     extend type Query{
         getUserCreatedTasks: [Task]!
         getUserAssignedTasks: [Task]!
-        getTask(taskId: String!): Task!
+        getTask(taskId: ID!): Task!
     }
 `

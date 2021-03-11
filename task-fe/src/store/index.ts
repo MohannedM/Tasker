@@ -1,6 +1,7 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import createReduxSagaMiddleware from 'redux-saga';
 import { authReducer, rootAuthSaga } from './auth';
+import { rootTasksSaga, tasksReducer } from './tasks';
 
 declare global {
     interface Window {
@@ -13,6 +14,7 @@ const sagaMiddleware = createReduxSagaMiddleware();
 
 const rootReducer = combineReducers({
     auth: authReducer,
+    tasks: tasksReducer,
 })
 
 const composeEnhancers = (typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
@@ -22,5 +24,6 @@ const store = createStore(rootReducer, composeEnhancers(
 ))
 
 sagaMiddleware.run(rootAuthSaga);
+sagaMiddleware.run(rootTasksSaga)
 
 export default store
